@@ -1,0 +1,50 @@
+[gd_scene load_steps=12 format=3 uid="uid://deyaenfl2w7rc"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqtodicifmn2" path="res://cannon/cannon_model.obj" id="1_ehq4m"]
+[ext_resource type="Script" path="res://cannon/cannon.gd" id="1_yfp86"]
+[ext_resource type="Material" uid="uid://cf46eqdyje08m" path="res://cannon/cannon.tres" id="3_kmv4m"]
+[ext_resource type="Material" uid="uid://72bpncrw1f0y" path="res://cannon/flash_red.tres" id="5_7e4aa"]
+[ext_resource type="Material" uid="uid://jklmqijwf68n" path="res://cannon/flash_orange.tres" id="6_l2npq"]
+[ext_resource type="Material" uid="uid://db51nkkwbeiey" path="res://cannon/flash_yellow.tres" id="7_qoi61"]
+[ext_resource type="ArrayMesh" uid="uid://1eoend85ary7" path="res://cannon/muzzle_flash.obj" id="7_vhja4"]
+[ext_resource type="Material" uid="uid://duqtfjjd55mmd" path="res://cannon/flash_white.tres" id="8_k5ihn"]
+[ext_resource type="ArrayMesh" uid="uid://bgooc1kadmp7x" path="res://cannon/base/cannon_cart_model.obj" id="8_r6fk8"]
+[ext_resource type="Material" uid="uid://wqe5qwy1o1dr" path="res://cannon/base/cannon_cart.tres" id="10_4vvbl"]
+[ext_resource type="AudioStream" uid="uid://sh514oxanunt" path="res://cannon/322511__liamg_sfx__explosion-1b.wav" id="11_1yti8"]
+
+[node name="Cannon" type="Node3D"]
+script = ExtResource("1_yfp86")
+
+[node name="CannonBody" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.642788, 0.766044, 0, 0.766044, -0.642788, -1, -2.80971e-08, -3.34849e-08, -0.00455618, 2, -1.9908e-05)
+mesh = ExtResource("1_ehq4m")
+surface_material_override/0 = ExtResource("3_kmv4m")
+surface_material_override/1 = ExtResource("3_kmv4m")
+
+[node name="MuzzleFlash" type="MeshInstance3D" parent="CannonBody"]
+transform = Transform3D(-2.34394e-08, -1.9668e-08, -0.7, 0, 0.7, -1.9668e-08, 0.7, 0, -2.34394e-08, -0.000834075, 3.08552, -0.00667831)
+visible = false
+mesh = ExtResource("7_vhja4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_7e4aa")
+surface_material_override/1 = ExtResource("6_l2npq")
+surface_material_override/2 = ExtResource("7_qoi61")
+surface_material_override/3 = ExtResource("8_k5ihn")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CannonBody"]
+transform = Transform3D(-3.34849e-08, -2.80971e-08, -1, -1.49012e-07, 1, -2.80971e-08, 1, 1.49012e-07, -3.34849e-08, -0.000834155, 6.58888, -0.554413)
+visible = false
+light_color = Color(1, 0.356863, 0, 1)
+light_energy = 15.0
+omni_range = 10.0
+
+[node name="CannonCart" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("8_r6fk8")
+skeleton = NodePath("../CannonBody")
+surface_material_override/0 = ExtResource("10_4vvbl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1yti8")
+
+[connection signal="fired" from="." to="." method="_on_fired"]

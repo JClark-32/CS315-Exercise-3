@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dwper0lm6gci8"]
+
+[ext_resource type="Texture2D" uid="uid://c875n4u5q6oj3" path="res://crown/crown_base.png" id="1_mvc5e"]
+[ext_resource type="Texture2D" uid="uid://pantran5w3vb" path="res://crown/crown_metallic.png" id="2_nn10n"]
+[ext_resource type="Texture2D" uid="uid://bgawcs4lp2t6w" path="res://crown/crown_normal.png" id="3_cxyhb"]
+[ext_resource type="Texture2D" uid="uid://67055t8o76a3" path="res://crown/crown_roughness.png" id="4_bh1w5"]
+
+[resource]
+albedo_texture = ExtResource("1_mvc5e")
+metallic = 1.0
+metallic_texture = ExtResource("2_nn10n")
+roughness_texture = ExtResource("4_bh1w5")
+normal_enabled = true
+normal_texture = ExtResource("3_cxyhb")

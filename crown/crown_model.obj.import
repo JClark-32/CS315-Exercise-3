@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://tljhg3c684aq"
+path="res://.godot/imported/crown_model.obj-31363104ac3ecc6a8552cc319a8f4948.mesh"
+
+[deps]
+
+files=["res://.godot/imported/crown_model.obj-31363104ac3ecc6a8552cc319a8f4948.mesh"]
+
+source_file="res://crown/crown_model.obj"
+dest_files=["res://.godot/imported/crown_model.obj-31363104ac3ecc6a8552cc319a8f4948.mesh", "res://.godot/imported/crown_model.obj-31363104ac3ecc6a8552cc319a8f4948.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

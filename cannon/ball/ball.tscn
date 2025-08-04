@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://din07cr2l78k"]
+
+[ext_resource type="Texture2D" uid="uid://bgo2iims3lg6b" path="res://cannon/ball/ball_base.png" id="1_f8ejb"]
+[ext_resource type="Script" path="res://cannon/ball/ball.gd" id="1_x3uy8"]
+[ext_resource type="Texture2D" uid="uid://cf8smfrseyksj" path="res://cannon/ball/ball_metallic.png" id="2_f2s08"]
+[ext_resource type="Texture2D" uid="uid://cp72so4yfnbo0" path="res://cannon/ball/ball_normal.png" id="3_w1ttw"]
+[ext_resource type="Texture2D" uid="uid://hw2yhoupg37m" path="res://cannon/ball/ball_roughness.png" id="4_hjmue"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqrgw"]
+albedo_texture = ExtResource("1_f8ejb")
+metallic = 1.0
+metallic_texture = ExtResource("2_f2s08")
+roughness_texture = ExtResource("4_hjmue")
+normal_enabled = true
+normal_texture = ExtResource("3_w1ttw")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xdaet"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2f4du"]
+transparency = 1
+albedo_color = Color(0.427451, 0.427451, 0.427451, 0.411765)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bl2b7"]
+material = SubResource("StandardMaterial3D_2f4du")
+radial_segments = 12
+rings = 3
+
+[sub_resource type="Curve" id="Curve_orsb8"]
+_data = [Vector2(0, 0.714286), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Ball" type="RigidBody3D"]
+script = ExtResource("1_x3uy8")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radial_segments = 20
+rings = 20
+material = SubResource("StandardMaterial3D_iqrgw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_xdaet")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00537634, 0.0107079, -0.00389218)
+emitting = false
+amount = 100
+lifetime = 4.0
+one_shot = true
+preprocess = 0.5
+randomness = 0.15
+mesh = SubResource("SphereMesh_bl2b7")
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 1, 0)
+initial_velocity_max = 0.65
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_orsb8")
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://duqtfjjd55mmd"]
+
+[resource]
+render_priority = 3
+transparency = 1
+specular_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0

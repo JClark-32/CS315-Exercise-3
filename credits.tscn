@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://drcdbekeo1p75"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_ho8nu"]
+
+[node name="credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ho8nu")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -81.0
+offset_right = 22.5
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="SFXCredit" type="Label" parent="."]
+offset_left = 204.0
+offset_top = 337.0
+offset_right = 1005.0
+offset_bottom = 360.0
+text = "Explosion 1b by LiamG_SFX -- https://freesound.org/s/322511/ -- License: Attribution NonCommercial 4.0
+Glass Shatter 3 by lurpsis -- https://freesound.org/s/444136/ -- License: Creative Commons 0
+Metal Hit by BenjaminNelan -- https://freesound.org/s/410364/ -- License: Creative Commons 0
+\"Lord of the Land\" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: 
+By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 204.0
+offset_top = 311.0
+offset_right = 548.0
+offset_bottom = 334.0
+text = "Game and Visual Assets made by Jacob Clark"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
